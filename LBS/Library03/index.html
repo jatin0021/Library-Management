@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login System</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+   
+    <div class="login-container">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <label for="userType">User Type:</label>
+        <select id="userType">
+          <option value="admin">Admin</option>
+          <option value="user">User</option>
+        </select>
+
+        <label for="userId">User ID:</label>
+        <input
+          type="text"
+          id="userId"
+          placeholder="Enter your user ID"
+          required
+        />
+
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+          required
+        />
+
+        <button type="submit">Login</button>
+        <p id="error-message"></p>
+      </form>
+    </div>
+
+    <!-- Dashboard Section -->
+    <div class="dashboard-container" style="display: none">
+      <h2>Welcome to the Library Management System</h2>
+      <div id="maintenanceMenu" class="section">
+        <h3>Maintenance Menu</h3>
+        <ul>
+          <li>
+            <a href="#" onclick="showSection('addMembership')"
+              >Add Membership</a
+            >
+          </li>
+          <li>
+            <a href="#" onclick="showSection('updateMembership')"
+              >Update Membership</a
+            >
+          </li>
+          <li>
+            <a href="#" onclick="showSection('addBookMovie')">Add Book/Movie</a>
+          </li>
+          <li>
+            <a href="#" onclick="showSection('updateBookMovie')"
+              >Update Book/Movie</a
+            >
+          </li>
+          <li><a href="#" onclick="showSection('addUser')">Add User</a></li>
+          <li>
+            <a href="#" onclick="showSection('updateUser')">Update User</a>
+          </li>
+        </ul>
+        <div id="addMembership" class="sub-section" style="display: none">
+          <h4>Add Membership</h4>
+          <!-- Add Membership Form from the previous code -->
+          <!-- Implement addMembership form here -->
+          <form id="addMembershipForm">
+            <label for="memberName">Member Name:</label>
+            <input
+              type="text"
+              id="memberName"
+              name="memberName"
+              required
+            /><br />
+
+            <label for="contactInfo">Contact Information:</label>
+            <input
+              type="text"
+              id="contactInfo"
+              name="contactInfo"
+              required
+            /><br />
+
+            <label for="membershipNumber">Membership Number:</label>
+            <input
+              type="text"
+              id="membershipNumber"
+              name="membershipNumber"
+              required
+            /><br />
+
+            <label for="membershipDuration">Membership Duration:</label>
+            <select id="membershipDuration" name="membershipDuration">
+              <option value="6 months">6 months</option>
+              <option value="1 year">1 year</option>
+              <option value="2 years">2 years</option></select
+            ><br />
+
+            <input type="submit" value="Add Membership" />
+          </form>
+        </div>
+
+        <div id="updateMembership" class="sub-section" style="display: none">
+          <h4>Update Membership</h4>
+          <!-- Update Membership Form from the previous code -->
+          <!-- Implement updateMembership form here -->
+          <form id="updateMembershipForm">
+            <label for="updateMembershipNumber">Membership Number:</label>
+            <input
+              type="text"
+              id="updateMembershipNumber"
+              name="updateMembershipNumber"
+              required
+            /><br />
+
+            <label for="updateMembershipType">Extend Membership:</label>
+            <select id="updateMembershipType" name="updateMembershipType">
+              <option value="6">6 months</option>
+              <option value="12">1 year</option>
+              <option value="24">2 years</option></select
+            ><br />
+
+            <button type="submit">Update Membership</button>
+            <p id="updateMembershipError" style="color: red"></p>
+          </form>
+        </div>
+
+        <div id="addBookMovie" class="sub-section" style="display: none">
+          <h4>Add Book/Movie</h4>
+          <!-- Add Book Form from the previous code -->
+          <form id="addBookForm">
+            <label for="itemType">Type:</label>
+            <select id="itemType" name="itemType">
+              <option value="book">Book</option>
+              <option value="movie">Movie</option></select
+            ><br />
+
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required /><br />
+
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" required /><br />
+
+            <label for="year">Published Year:</label>
+            <input type="number" id="year" name="year" required /><br />
+
+            <label for="isbn">ISBN (if book):</label>
+            <input type="text" id="isbn" name="isbn" /><br />
+
+            <label for="genre">Genre:</label>
+            <input type="text" id="genre" name="genre" required /><br />
+
+            <button type="submit">Add Book/Movie</button>
+            <p id="addBookError" style="color: red"></p>
+          </form>
+        </div>
+
+        <div id="updateBookMovie" class="sub-section" style="display: none">
+          <h4>Update Book/Movie</h4>
+          <!-- Update Book Form from the previous code -->
+          <form id="updateBookForm">
+            <label for="updateItemType">Type:</label>
+            <select id="updateItemType" name="updateItemType">
+              <option value="book">Book</option>
+              <option value="movie">Movie</option></select
+            ><br />
+
+            <label for="updateTitle">Title:</label>
+            <input
+              type="text"
+              id="updateTitle"
+              name="updateTitle"
+              required
+            /><br />
+
+            <label for="updateAuthor">Author:</label>
+            <input
+              type="text"
+              id="updateAuthor"
+              name="updateAuthor"
+              required
+            /><br />
+
+            <label for="updateYear">Published Year:</label>
+            <input
+              type="number"
+              id="updateYear"
+              name="updateYear"
+              required
+            /><br />
+
+            <label for="updateIsbn">ISBN (if book):</label>
+            <input type="text" id="updateIsbn" name="updateIsbn" /><br />
+
+            <label for="updateGenre">Genre:</label>
+            <input
+              type="text"
+              id="updateGenre"
+              name="updateGenre"
+              required
+            /><br />
+
+            <button type="submit">Update Book/Movie</button>
+            <p id="updateBookError" style="color: red"></p>
+          </form>
+        </div>
+
+        <div id="addUser" class="sub-section" style="display: none">
+          <h4>Add User</h4>
+          <!-- Add User Form from the previous code -->
+          <form id="addUserForm">
+            <label for="userName">Name:</label>
+            <input type="text" id="userName" name="userName" required /><br />
+
+            <label for="userType">User Type:</label>
+            <select id="userType" name="userType">
+              <option value="new">New</option>
+              <option value="existing">Existing</option></select
+            ><br />
+
+            <label for="userContact">Contact Info:</label>
+            <input
+              type="text"
+              id="userContact"
+              name="userContact"
+              required
+            /><br />
+
+            <label for="userEmail">Email:</label>
+            <input
+              type="email"
+              id="userEmail"
+              name="userEmail"
+              required
+            /><br />
+
+            <label for="userPassword">Password:</label>
+            <input
+              type="password"
+              id="userPassword"
+              name="userPassword"
+              required
+            /><br />
+
+            <button type="submit">Add User</button>
+            <p id="addUserError" style="color: red"></p>
+          </form>
+        </div>
+
+        <div id="updateUser" class="sub-section" style="display: none">
+          <h4>Update User</h4>
+          <!-- Update User Form from the previous code -->
+          <form id="updateUserForm">
+            <label for="updateUserName">Name:</label>
+            <input
+              type="text"
+              id="updateUserName"
+              name="updateUserName"
+              required
+            /><br />
+
+            <label for="updateUserType">User Type:</label>
+            <select id="updateUserType" name="updateUserType">
+              <option value="new">New</option>
+              <option value="existing">Existing</option></select
+            ><br />
+
+            <label for="updateUserContact">Contact Info:</label>
+            <input
+              type="text"
+              id="updateUserContact"
+              name="updateUserContact"
+              required
+            /><br />
+
+            <label for="updateUserEmail">Email:</label>
+            <input
+              type="email"
+              id="updateUserEmail"
+              name="updateUserEmail"
+              required
+            /><br />
+
+            <button type="submit">Update User</button>
+            <p id="updateUserError" style="color: red"></p>
+          </form>
+        </div>
+      </div>
+
+      <div id="reportMenu" class="section">
+        <h3>Report Menu</h3>
+        <ul>
+          <li>
+            <a href="#" onclick="showSection('activeIssues')">Active Issues</a>
+          </li>
+
+          <li>
+            <a href="#" onclick="showSection('masterListMemberships')"
+              >Master List of Memberships</a
+            >
+          </li>
+          <li>
+            <a href="#" onclick="showSection('masterListMovies')"
+              >Master List of Movies</a
+            >
+          </li>
+          <li>
+            <a href="#" onclick="showSection('masterListBooks')"
+              >Master List of Books</a
+            >
+          </li>
+          <li>
+            <a href="#" onclick="showSection('overdueReturns')"
+              >Overdue Returns</a
+            >
+          </li>
+        </ul>
+          <h2>Report Menu</h2>
+          
+          <!-- Active Issues (Admin only can add) -->
+          <div class="form-container">
+            <h3>Active Issues</h3>
+            <input type="text" id="bookTitle" placeholder="Book Title" required>
+            <input type="text" id="authorName" placeholder="Author" required>
+            <input type="date" id="issueDate" placeholder="Issue Date" required>
+            <input type="date" id="returnDate" placeholder="Return Date" required>
+            <button onclick="addIssue()">Add Issue</button>
+        </div>
+        
+        <div class="issue-list">
+            <h2>Issued Book List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Book Title</th>
+                        <th>Author</th>
+                        <th>Issue Date</th>
+                        <th>Return Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="issue-list">
+                    <!-- Issues will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-container">
+          <h3>Master List of Memberships</h3>
+          <input type="text" id="memberName" placeholder="Member Name" required>
+          <select id="membershipType" required>
+              <option value="6 months">6 months</option>
+              <option value="1 year">1 year</option>
+              <option value="2 years">2 years</option>
+          </select>
+          <input type="date" id="joinDate" required>
+          <button onclick="addMembership()">Add Membership</button>
+      </div>
+      
+      <div class="membership-list">
+          <h2>Membership List</h2>
+          <table>
+              <thead>
+                  <tr>
+                      <th>Name</th>
+                      <th>Membership Type</th>
+                      <th>Join Date</th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+              <tbody id="membership-list">
+                  <!-- Membership details will be added here dynamically -->
+              </tbody>
+          </table>
+      </div>
+      
+
+      <div class="form-container">
+        <h3>Master List of Movies</h3>
+        <input type="text" id="movieTitle" placeholder="Movie Title" required>
+        <input type="text" id="directorName" placeholder="Director" required>
+        <input type="number" id="releaseYear" placeholder="Release Year" required>
+        <button onclick="addMovie()">Add Movie</button>
+    </div>
+    
+    <div class="movie-list">
+        <h2>Movie List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Director</th>
+                    <th>Release Year</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="movie-list">
+                <!-- Movie details will be added here dynamically -->
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="form-container">
+      <h3>Master List of Books</h3>
+      <input type="text" id="bookTitle" placeholder="Book Title" required>
+      <input type="text" id="bookAuthor" placeholder="Author" required>
+      <input type="number" id="publicationYear" placeholder="Publication Year" required>
+      <button onclick="addBookToList()">Add Book</button>
+  </div>
+  
+  <div class="book-list">
+      <h2>Book List</h2>
+      <table>
+          <thead>
+              <tr>
+                  <th>Title</th>
+                  <th>Author</th>
+                  <th>Publication Year</th>
+                  <th>Action</th>
+              </tr>
+          </thead>
+          <tbody id="book-list-table">
+              <!-- Book details will be added here dynamically -->
+          </tbody>
+      </table>
+  </div>
+  
+  <div class="form-container">
+    <h3>Overdue Returns</h3>
+    <input type="text" id="overdueBookTitle" placeholder="Book Title" required>
+    <input type="text" id="overdueAuthor" placeholder="Author" required>
+    <input type="date" id="originalReturnDate" required>
+    <input type="date" id="actualReturnDate" required>
+    <button onclick="addOverdueReturn()">Add Overdue Return</button>
+</div>
+
+<div class="overdue-list">
+    <h2>Overdue Return List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Book Title</th>
+                <th>Author</th>
+                <th>Original Return Date</th>
+                <th>Actual Return Date</th>
+                <th>Fine</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="overdue-list-table">
+            <!-- Overdue details will be added here dynamically -->
+        </tbody>
+    </table>
+</div>
+
+        
+      </div>
+
+      <div id="transactionMenu" class="section">
+        <h3>Transactions</h3>
+        <ul>
+          <li>
+            <a href="#" onclick="showSection('checkBookAvailability')"
+              >Check Book Availability</a
+            >
+          </li>
+          <li>
+            <a href="#" onclick="showSection('issueBook')">Issue a Book</a>
+          </li>
+          <li>
+            <a href="#" onclick="showSection('returnBook')">Return a Book</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Maintenance Subsections -->
+      <div id="addMembership" class="sub-section" style="display: none">
+        <h4>Add Membership</h4>
+        <form>
+          <!-- Form inputs for adding membership -->
+        </form>
+      </div>
+
+      <div id="updateMembership" class="sub-section" style="display: none">
+        <h4>Update Membership</h4>
+        <form>
+          <!-- Form inputs for updating membership -->
+        </form>
+      </div>
+
+      <!-- Similar subsections for adding/updating books, movies, users go here... -->
+
+      <!-- Report Menu Subsections -->
+      <div id="activeIssues" class="sub-section" style="display: none">
+        <h4>Active Issues</h4>
+        <!-- Report data here -->
+      </div>
+
+      <!-- Similar subsections for reports (Memberships, Books, etc.) go here... -->
+
+      <!-- Transaction Subsections -->
+      <div id="checkBookAvailability" class="sub-section" style="display: none">
+        <h4>Check Book Availability</h4>
+        <form>
+          <!-- Form for checking book availability -->
+        </form>
+      </div>
+
+      <div id="issueBook" class="sub-section" style="display: none">
+        <h4>Issue a Book</h4>
+        <form>
+          <!-- Form for issuing a book -->
+        </form>
+      </div>
+
+      <div id="returnBook" class="sub-section" style="display: none">
+        <h4>Return a Book</h4>
+        <form>
+          <!-- Form for returning a book, fine payment -->
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
